@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blocks</title>
+    <link rel="stylesheet" href="./blocks.css" />
+    <style>
+        body {
+        font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .controls {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .quantity-selector {
+        margin-right: 10px;
+        }
+
+        .blocks {
+        display: flex;
+        flex-wrap: wrap;
+        }
+
+        .item {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border: 1px solid black;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="blocks-coloring-container">
+      <div class="controls">
+        <input type="number" min="0" class="quantity-selector" />
+        <input type="color" class="color-selector" />
+      </div>
+      <div class="blocks"></div>
+    </div>
+    <script src="block-color.js"></script>
+  </body>
+</html>

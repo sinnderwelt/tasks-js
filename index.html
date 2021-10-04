@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>project</title>
+    <script src="./index.js"></script>
+</head>
+<body>
+    <button class="btn">Я кнопка</button>
+    <input type="text" id="phone">
+    <form id="myForm">
+        <input type="text" name="name">
+        <input type="text" name="lastName">
+        <select name="gender">
+            <option value="m">М</option>
+            <option value="f">Ж</option>
+        </select>
+        <input type="checkbox" name="check">
+        <button id="btn">Отправить</button>
+    </form>
+    <div>
+        <input type="text" id="nameInput">
+        <button id="myButton">Добавить</button>
+        <ul id="list"></ul>
+    </div>
+    
+    <script>
+        
+
+        // Вывод на консоль
+
+
+        var name = 'Ваня';
+        console.log(name);
+
+
+        // Условие if
+
+
+        if (name == 'Ваня') {
+            console.log('да');
+        } else {
+            console.log('нет');
+        }
+
+
+        // Цикл
+
+
+        for (var i = 0; i < 3; i++) {
+            console.log(i);
+        }
+
+
+        // Сложение 
+
+
+        function sum(a, b) {
+            var result = a + b;
+            return result;
+        }
+        var result = sum(2, 3);
+        console.log(result);
+
+
+        // Изменения css кнопки при клике
+
+
+        const myButton = document.querySelector ('.btn');
+        myButton.addEventListener ('click', function() {
+            myButton.style.color = 'red';
+        } );
+
+
+         // Ввод только цифр
+
+
+        const phone = document.querySelector('#phone');
+        phone.addEventListener('keydown', function (event) {
+            let isDigit = false;
+            let isDash = false;
+            let isControl = false;
+
+            if (event.key >=0 || event.key <=9) {
+                isDigit = true;
+            }
+            if (event.key == '-'){
+                isDash = true;
+            }
+            if (event.key == 'ArrowLeft' || event.key == 'ArrowRight' || event.key == 'Backspace') {
+                isControl = true;
+            }
+            if (isDigit == false && isDash == false && isControl == false) {
+                event.preventDefault();
+            }
+        })
+
+
+       // Отправка данных из формы на консоль
+
+        
+        const myForm = document.querySelector('#myForm');
+        const sendButton = document.querySelector('#btn');
+
+        sendButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Чтобы страница не перезагружалась
+
+            console.log(myForm.elements.name.value);
+            console.log(myForm.elements.lastName.value);
+
+            if (myForm.elements.gender.value == 'm') {
+                console.log('мужик');
+            } else {
+                console.log('дээвушка');
+            }
+            console.log(myForm.elements.check.checked);
+        });
+
+
+        // Добавляем по клику что - то в список
+
+
+        const btn = document.querySelector('#myButton');
+        const nameInput = document.querySelector('#nameInput');
+        const list = document.querySelector('#list');
+
+        btn.addEventListener('click', function() {
+            const newItem = document.createElement('li');
+            newItem.classList.add('spisok');
+            newItem.textContent = nameInput.value;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Удалить';
+
+            deleteButton.addEventListener('click', function() {
+                list.removeChild(newItem);
+            });
+
+            newItem.appendChild(deleteButton);
+            list.appendChild(newItem);
+
+            nameInput.value = '';
+        })
+    </script>
+
+</body>
+</html>
